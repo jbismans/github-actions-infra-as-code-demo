@@ -116,7 +116,7 @@ resource "azurerm_network_security_rule" "fgtnsgallowallout" {
   priority                    = 100
   direction                   = "Outbound"
   access                      = "Allow"
-  protocol                    = "Tcp"
+  protocol                    = "*"
   source_port_range           = "*"
   destination_port_range      = "*"
   source_address_prefix       = "*"
@@ -130,7 +130,7 @@ resource "azurerm_network_security_rule" "fgtnsgallowallin" {
   priority                    = 100
   direction                   = "Inbound"
   access                      = "Allow"
-  protocol                    = "Tcp"
+  protocol                    = "*"
   source_port_range           = "*"
   destination_port_range      = "*"
   source_address_prefix       = "*"

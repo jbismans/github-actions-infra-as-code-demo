@@ -77,7 +77,7 @@ jobs:
         env:
           PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }} #Variable needs to be fixed?
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const output = `#### Terraform Format and Style 🖌\`${{ steps.fmt.outcome }}\`
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
@@ -102,7 +102,6 @@ jobs:
             })
 
       - name: Setup Infracost
-        #uses: infracost/actions/setup@v1
         uses: infracost/actions/setup@v2
         with:
           api-key: ${{ secrets.INFRACOST_API_KEY }}
@@ -116,10 +115,6 @@ jobs:
         working-directory: ${{ env.TFPath }}
 
       - name: Post Infracost comment
-        #uses: infracost/actions/comment@v1
-        #with:
-          #path: /tmp/infracost.json
-          #behavior: update
         run: infracost comment github --path=/tmp/infracost.json --repo=$GITHUB_REPOSITORY --github-token=${{github.token}} --commit $GITHUB_SHA --behavior=update
 
       - name: Terraform Plan Status

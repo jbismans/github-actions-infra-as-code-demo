@@ -116,11 +116,11 @@ jobs:
         working-directory: ${{ env.TFPath }}
 
       - name: Post Infracost comment
-        #uses: infracost/actions/comment@v1
-        #with:
-          #path: /tmp/infracost.json
-          #behavior: update
-        run: infracost comment github --path=/tmp/infracost.json --repo=$GITHUB_REPOSITORY --github-token=${{github.token}} --commit $BUILD_SOURCEVERSION --behavior=update
+        uses: infracost/actions/comment@v1
+        with:
+          path: /tmp/infracost.json
+          behavior: update
+        #run: infracost comment github --path=/tmp/infracost.json --repo=$GITHUB_REPOSITORY --github-token=${{github.token}} --commit $BUILD_SOURCEVERSION --behavior=update
 
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'

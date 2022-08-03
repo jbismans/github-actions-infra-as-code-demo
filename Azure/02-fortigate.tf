@@ -153,3 +153,9 @@ resource "azurerm_role_assignment" "rolesub" {
   role_definition_name = "Reader"
   principal_id         = azurerm_virtual_machine.fgtvm.identity[0].principal_id
 }
+
+resource "azurerm_role_assignment" "roleaut" {
+  scope                = azurerm_resource_group.resourcegroup.id
+  role_definition_name = "Contributor"
+  principal_id         = azurerm_automation_account.jbi-automation-user.identity[0].principal_id
+}

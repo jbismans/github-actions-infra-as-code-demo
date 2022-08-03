@@ -126,6 +126,7 @@ data "template_file" "fgt_custom_data" {
     fgt_internal_gw     = var.gateway_ipaddress["2"]
     vnet_network        = var.vnet
     prefix              = var.PREFIX
+    az_token_webhook    = var.AZ_TOKEN_WEBHOOK
   }
 }
 

@@ -157,5 +157,5 @@ resource "azurerm_role_assignment" "rolesub" {
 resource "azurerm_role_assignment" "roleaut" {
   scope                = azurerm_resource_group.resourcegroup.id
   role_definition_name = "Contributor"
-  principal_id         = azurerm_automation_account.jbi-automation-user.identity[0].principal_id
+  principal_id         = "7a62e2fe-2f44-4b72-983c-bb381b631fe0"
 }

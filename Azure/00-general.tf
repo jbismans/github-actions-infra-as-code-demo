@@ -182,11 +182,11 @@ variable "backend_tags" {
 # Resource Group
 ##############################################################################################################
 
-#resource "azurerm_resource_group" "resourcegroup" {
-#  name     = "${var.PREFIX}-RG"
-#  location = var.LOCATION
-#  tags     = var.fortinet_tags
-#}
+data "azurerm_resource_group" "resourcegroup" {
+  name     = "${var.PREFIX}-RG"
+  location = var.LOCATION
+  tags     = var.fortinet_tags
+}
 
 ##############################################################################################################
 # Retrieve Flex VM token

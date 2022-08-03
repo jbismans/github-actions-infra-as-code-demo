@@ -64,7 +64,7 @@ config system automation-trigger
         config fields
             edit 1
                 set name "cfgobj"
-                set value "websrv"
+                set value "Backend"
             next
         end
     next
@@ -73,10 +73,10 @@ config system automation-action
     edit "RT-Action"
         set action-type webhook
         set protocol https
-        set uri "5ead174e-260d-424d-86a6-9329c00ea365.webhook.we.azure-automation.net/webhooks?token=wq0aQIZCpv0v5rf1IuhL27X6YN%2fQ%2bYPbrNmk30ZMCG8%3d"
+        set uri "${az_token_webhook}"
         set http-body "{\"action\":\"%%log.action%%\", \"addr\":\"%%log.addr%%\"}"
         set port 443
-        set headers "ResourceGroupName:FORTINET-1554562727-33-RG" "RouteTableName:FORTINET-1554562727-33-RT-PROTECTED-A" "RouteNamePrefix:ms" "NextHopIp:172.16.136.69"
+        set headers "ResourceGroupName:${prefix}-RG" "RouteTableName:${prefix}-RT-PROTECTED-A" "RouteNamePrefix:ms" "NextHopIp:${fgt_internal_ipaddr}"
     next
 end
 config system automation-stitch
@@ -90,6 +90,8 @@ config system automation-stitch
         end
     next
 end
+
+execute reboot
 
 %{ if fgt_license_file != "" }
 --===============0086047718136476635==

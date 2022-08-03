@@ -27,6 +27,9 @@ variable "USERNAME" {
 variable "PASSWORD" {
 }
 
+variable "AZ_TOKEN_WEBHOOK" {
+}
+
 ##############################################################################################################
 # FortiGate license type
 ##############################################################################################################
@@ -154,7 +157,7 @@ variable "gateway_ipaddress" {
 }
 
 variable "fgt_vmsize" {
-  default = "Standard_F2s"
+  default = "Standard_F4s"
 }
 
 variable "fortinet_tags" {

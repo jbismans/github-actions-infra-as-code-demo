@@ -1,5 +1,5 @@
 version: v1
 
 id:
-  org: ${{ secrets.FDSORG }}
-  app: ${{ secrets.FDSGAIAC }}
+  org: ${{ env.FDS_ORG }}
+  app: ${{ env.FDS_APP }}

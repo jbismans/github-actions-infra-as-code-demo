@@ -3,9 +3,3 @@ version: v1
 id:
   org: ${{ secrets.FDSORG }}
   app: ${{ secrets.FDSGAIAC }}
-
-# Optional parameters
-scanners:
-  - sast
-  - sca
-  - iac

@@ -76,7 +76,24 @@ config system automation-action
         set uri "${az_token_webhook}"
         set http-body "{\"action\":\"%%log.action%%\", \"addr\":\"%%log.addr%%\"}"
         set port 443
-        set headers "ResourceGroupName:${prefix}-RG" "RouteTableName:${prefix}-RT-PROTECTED-A" "RouteNamePrefix:ms" "NextHopIp:${fgt_internal_ipaddr}"
+        config http-headers
+            edit 1
+                set key "ResourceGroupName"
+                set value "${prefix}-RG"
+            next
+            edit 2
+                set key "RouteTableName"
+                set value "${prefix}-RT-PROTECTED-A"
+            next
+            edit 3
+                set key "RouteNamePrefix"
+                set value "ms"
+            next
+            edit 4
+                set key "NextHopIp"
+                set value "${fgt_internal_ipaddr}"
+            next
+        end
     next
 end
 config system automation-stitch
